@@ -1,0 +1,16 @@
+.card {
+  padding: 20px;
+  width: 75%;
+  background-color: var(--color-card);
+  color: var(--color-text);
+  text-align: end;
+}
+.cardTitleWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  color: var(--color-accent);
+}
+.cardButton {
+  margin-left: auto;
+}
