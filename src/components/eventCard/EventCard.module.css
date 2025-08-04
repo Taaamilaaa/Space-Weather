@@ -1,5 +1,5 @@
 .card {
-  padding: 20px;
+  padding: 30px;
   width: 75%;
   background-color: var(--color-card);
   color: var(--color-text);
@@ -13,4 +13,18 @@
 }
 .cardButton {
   margin-left: auto;
+}
+.dataList {
+  margin-bottom: 25px;
+  color: var(--color-text-secondary);
+  padding-left: 75px;
+  text-align: left;
+}
+.cardItem {
+  margin-bottom: 10px;
+}
+.linkWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
