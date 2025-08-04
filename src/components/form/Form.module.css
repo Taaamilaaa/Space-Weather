@@ -1,0 +1,12 @@
+.container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.submitBtn {
+  text-align: right;
+}
+.date {
+  margin-left: 10px;
+}
