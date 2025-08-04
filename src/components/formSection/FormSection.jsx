@@ -1,15 +1,21 @@
 import { Form } from "../form/Form";
+import styles from "./FormSection.module.css";
 
-export function FormSection({ todayDate, pastDate }) {
+export function FormSection({ todayDate, today, maxPastDate, onFormSubmite }) {
   return (
     <>
-      <div>
-        <h2>Today: {todayDate}</h2>
-        <p>
-          You can choose any time period from {pastDate} to {todayDate}
-        </p>
-        <Form />
-      </div>
+      <section className={styles.section}>
+        <div className={styles.textContainer}>
+          <h1>Today: {todayDate}</h1>
+          <p>Enter a date range and select events.</p>
+        </div>
+
+        <Form
+          onFormSubmite={onFormSubmite}
+          today={today}
+          maxPastDate={maxPastDate}
+        />
+      </section>
     </>
   );
 }
