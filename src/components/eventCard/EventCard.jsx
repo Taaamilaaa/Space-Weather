@@ -17,10 +17,6 @@ export function EventCard({
   eventTime,
   kpIndex,
 }) {
-  console.log(kpIndex);
-  console.log(note);
-  console.log(instruments);
-  console.log(linkedEvents);
   return (
     <li className={styles.cardItem}>
       <div className={styles.card}>
