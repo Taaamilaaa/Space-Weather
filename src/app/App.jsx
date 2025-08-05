@@ -3,7 +3,7 @@ import { EventCardList } from "../components/eventCardList/EventCardList";
 import { FormSection } from "../components/formSection/FormSection";
 import { fetchData } from "../api/nasaAPI.js";
 import { dataNormol } from "../utils/helpers.js";
-import { Filter } from "../components/filter/Fiter.jsx";
+import { SortOptions } from "../components/sortOptions/SortOptions.jsx";
 import { sortingEvents } from "../utils/sorting.js";
 
 import "./App.css";
@@ -81,7 +81,7 @@ function App() {
       )}
       {data && (
         <>
-          <Filter onfilterChange={setSortMethod} />
+          <SortOptions onSortChange={setSortMethod} />
           <EventCardList events={data} />
         </>
       )}
