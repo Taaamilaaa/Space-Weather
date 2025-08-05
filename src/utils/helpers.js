@@ -27,13 +27,18 @@ export function dateCut(date) {
   return day;
 }
 
-export function dataNormol(data) {
+export function dataNormol(data, setEventFlag) {
   const arrResp = [];
 
   data.map((event) => {
     const type = event.type;
 
     const evData = event.data;
+    if (evData.length === 0) {
+      setEventFlag(true);
+    } else {
+      setEventFlag(false);
+    }
     for (const e in evData) {
       if (Object.prototype.hasOwnProperty.call(evData, e)) {
         const element = evData[e];
@@ -69,6 +74,5 @@ export function dataNormol(data) {
       }
     }
   });
-  console.log(arrResp);
   return arrResp;
 }
