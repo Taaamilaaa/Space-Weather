@@ -31,10 +31,9 @@ function convertPower(classType) {
 }
 
 const sortByPower = (data, sortMethod) => {
+  const arr = data.filter((el) => el.type !== "FLR");
+
   const flrEvents = data.filter((el) => el.type === "FLR");
-  const arr = data.filter((el) => {
-    el.type !== "FLR";
-  });
 
   if (sortMethod === "powerful") {
     flrEvents.sort(
