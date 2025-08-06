@@ -34,6 +34,8 @@ export function Form({ onFormSubmite, maxPastDate, today }) {
               name="startDate"
               placeholder={maxPastDate}
               className={styles.date}
+              max={today}
+              min={maxPastDate}
             />
           </label>
           <label htmlFor={currentId}>
@@ -44,6 +46,8 @@ export function Form({ onFormSubmite, maxPastDate, today }) {
               name="endDate"
               placeholder={today}
               className={styles.date}
+              max={today}
+              min={maxPastDate}
             />
           </label>
         </div>
