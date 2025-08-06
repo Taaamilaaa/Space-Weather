@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { EventCardList } from "./components/eventCardList/EventCardList.jsx";
 import { FormSection } from "./components/formSection/FormSection.jsx";
 import { fetchData } from "./api/nasaAPI.js";
 import { dataNormol } from "./utils/helpers.js";
 import { SortOptions } from "./components/sortOptions/SortOptions.jsx";
 import { sortingEvents } from "./utils/sorting.js";
+import { Header } from "./components/header/Header.jsx";
+import { HomePage } from "./pages/HomePage.jsx";
 
 function App() {
   const [data, setData] = useState(null);
@@ -60,35 +63,31 @@ function App() {
 
   useEffect(() => {
     sortingEvents(data, sortMethod, setData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortMethod]);
   return (
     <>
-      <FormSection
-        todayDate={currentDate}
-        onFormSubmite={handleForm}
-        today={currentDate}
-        maxPastDate={pastDate}
-      />
-      {loading && <p>Loading data, please wait...</p>}
-      {data && (
-        <p>
-          From {startD} to {endD} we find {data.length} events.
-        </p>
-      )}
-      {eventsFlag && (
-        <p>
-          There are no events from {startD} to {endD}
-        </p>
-      )}
-      {error && (
-        <p>Whoops, something went wrong! Please try reloading this page!</p>
-      )}
-      {data && (
-        <>
-          <SortOptions onSortChange={setSortMethod} />
-          <EventCardList events={data} />
-        </>
-      )}
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              todayDate={currentDate}
+              onFormSubmite={handleForm}
+              today={currentDate}
+              maxPastDate={pastDate}
+              loading={loading}
+              data={data}
+              startD={startD}
+              endD={endD}
+              eventsFlag={eventsFlag}
+              error={error}
+              setSortMethod={setSortMethod}
+            />
+          }
+        />
+      </Routes>
     </>
   );
 }
