@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { EventCardList } from "./components/eventCardList/EventCardList.jsx";
-import { FormSection } from "./components/formSection/FormSection.jsx";
 import { fetchData } from "./api/nasaAPI.js";
 import { dataNormol } from "./utils/helpers.js";
-import { SortOptions } from "./components/sortOptions/SortOptions.jsx";
 import { sortingEvents } from "./utils/sorting.js";
-import { Header } from "./components/header/Header.jsx";
 import { HomePage } from "./pages/HomePage.jsx";
+import { AboutPage } from "./pages/AboutPage.jsx";
+import { EventPage } from "./pages/EventPage.jsx";
+import { Layout } from "./components/layout/Layout.jsx";
 
 function App() {
   const [data, setData] = useState(null);
   const [resp, setResp] = useState([]);
-
   const [loading, setLoading] = useState(false);
 
   const [dateRange, setDateRange] = useState({});
@@ -43,6 +41,7 @@ function App() {
         setEventsFlag(false);
         setLoading(true);
         const resp = await fetchData(startD, endD, eventTypes);
+
         setResp(resp);
       } catch (error) {
         // Встановлюємо стан error в true
@@ -65,28 +64,32 @@ function App() {
     sortingEvents(data, sortMethod, setData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortMethod]);
+
   return (
     <>
-      <Header />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <HomePage
-              todayDate={currentDate}
-              onFormSubmite={handleForm}
-              today={currentDate}
-              maxPastDate={pastDate}
-              loading={loading}
-              data={data}
-              startD={startD}
-              endD={endD}
-              eventsFlag={eventsFlag}
-              error={error}
-              setSortMethod={setSortMethod}
-            />
-          }
-        />
+        <Route path="/" element={<Layout />}>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                todayDate={currentDate}
+                onFormSubmite={handleForm}
+                today={currentDate}
+                maxPastDate={pastDate}
+                loading={loading}
+                data={data}
+                startD={startD}
+                endD={endD}
+                eventsFlag={eventsFlag}
+                error={error}
+                setSortMethod={setSortMethod}
+              />
+            }
+          />
+          <Route path="/:id" element={<EventPage data={data} />} />
+          <Route path="about" element={<AboutPage />} />
+        </Route>
       </Routes>
     </>
   );
