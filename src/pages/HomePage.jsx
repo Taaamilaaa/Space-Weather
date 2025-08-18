@@ -17,33 +17,38 @@ export function HomePage({
 }) {
   return (
     <>
-      <h1> Welcome to the SPACE WEATHER</h1>
+      <section>
+        <h1> Welcome to the SPACE WEATHER</h1>
 
-      <FormSection
-        todayDate={todayDate}
-        onFormSubmite={onFormSubmite}
-        today={today}
-        maxPastDate={maxPastDate}
-      />
-      {loading && <p>Loading data, please wait...</p>}
+        <FormSection
+          todayDate={todayDate}
+          onFormSubmite={onFormSubmite}
+          today={today}
+          maxPastDate={maxPastDate}
+        />
+      </section>
+      <section>
+        {loading && <p>Loading data, please wait...</p>}
+        {data && (
+          <p>
+            From {startD} to {endD} we find {data.length} events.
+          </p>
+        )}
+        {eventsFlag && (
+          <p>
+            There are no events from {startD} to {endD}
+          </p>
+        )}
+        {error && (
+          <p>Whoops, something went wrong! Please try reloading this page!</p>
+        )}
+      </section>
+
       {data && (
-        <p>
-          From {startD} to {endD} we find {data.length} events.
-        </p>
-      )}
-      {eventsFlag && (
-        <p>
-          There are no events from {startD} to {endD}
-        </p>
-      )}
-      {error && (
-        <p>Whoops, something went wrong! Please try reloading this page!</p>
-      )}
-      {data && (
-        <>
+        <section>
           <SortOptions onSortChange={setSortMethod} />
           <EventCardList events={data} />
-        </>
+        </section>
       )}
     </>
   );
