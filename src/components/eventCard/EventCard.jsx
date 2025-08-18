@@ -1,22 +1,24 @@
 import styles from "./EventCard.module.css";
 import { Button } from "../button/Button";
 import CardIcon from "../cardIcon/CardIcon";
+import { Link } from "react-router-dom";
+import { EventPage } from "../../pages/EventPage";
 
-export function EventCard({
-  type,
-  title,
-  startTime,
-  peakTime,
-  endTime,
-  classType,
-  date,
-  note,
-  instruments,
-  link,
-  linkedEvents,
-  eventTime,
-  kpIndex,
-}) {
+export function EventCard({ evEl }) {
+  const {
+    type,
+    title,
+    startTime,
+    peakTime,
+    endTime,
+    eventTime,
+    classType,
+    link,
+    date,
+    kpIndex,
+    id,
+  } = evEl;
+
   return (
     <li className={styles.cardItem}>
       <div className={styles.card}>
@@ -96,9 +98,11 @@ export function EventCard({
           <a href={link} target="_blank">
             <p>Show more information</p>
           </a>
-          <Button type="button" className={styles.cardButton}>
-            More details
-          </Button>
+          <Link to={`/${id}`} element={<EventPage />}>
+            <Button type="button" className={styles.cardButton}>
+              More details
+            </Button>{" "}
+          </Link>
         </div>
       </div>
     </li>
