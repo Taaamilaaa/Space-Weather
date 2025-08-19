@@ -17,7 +17,7 @@ function App() {
   const [eventTypes, setEventTypes] = useState([]);
   const [error, setError] = useState(false);
 
-  const [eventsFlag, setEventsFlag] = useState(false);
+  const [eventsFlag, setEventsFlag] = useState(null);
   const [sortMethod, setSortMethod] = useState("type");
 
   let currentDate = new Date();
@@ -38,7 +38,7 @@ function App() {
   useEffect(() => {
     const loadEvents = async () => {
       try {
-        setEventsFlag(false);
+        setEventsFlag(null);
         setLoading(true);
         const resp = await fetchData(startD, endD, eventTypes);
 
