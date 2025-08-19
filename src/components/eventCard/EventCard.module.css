@@ -1,6 +1,5 @@
 .card {
   padding: 30px;
-  width: 75%;
   background-color: var(--color-card);
   color: var(--color-text);
   text-align: end;
