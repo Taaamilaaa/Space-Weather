@@ -26,7 +26,12 @@ export function dateCut(date) {
   const day = date.substring(0, 10);
   return day;
 }
+export function dateForAPICut(date) {
+  //2025-08-03T13:50Z
+  const newDate = date.substring(0, 16);
 
+  return `${newDate}:00Z`;
+}
 export const imgIndexSelect = (arr) => {
   const min = 0;
   const max = arr.length;
@@ -45,6 +50,7 @@ const elProp = (type, wholeEl, newEl, images) => {
     newEl.date = dateCut(wholeEl.beginTime);
     newEl.eventTime = timeCut(wholeEl.beginTime);
     newEl.startTime = timeCut(wholeEl.beginTime);
+    newEl.beginTime = wholeEl.beginTime;
     newEl.peakTime = timeCut(wholeEl.peakTime);
     newEl.endTime = timeCut(wholeEl.endTime);
     newEl.classType = wholeEl.classType;
@@ -78,7 +84,7 @@ export function dataNormol(data, setEventFlag) {
     const evData = event.data;
     const evImages = event.DONKIimg;
 
-    evData.length === 0 ? setEventFlag(true) : setEventFlag(false);
+    evData.length === 0 ? setEventFlag(true) : setEventFlag(null);
 
     for (const e in evData) {
       if (Object.prototype.hasOwnProperty.call(evData, e)) {
