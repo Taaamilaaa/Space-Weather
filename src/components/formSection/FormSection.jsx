@@ -4,7 +4,7 @@ import styles from "./FormSection.module.css";
 export function FormSection({ todayDate, today, maxPastDate, onFormSubmite }) {
   return (
     <>
-      <section className={styles.section}>
+      <div className={styles.section}>
         <div className={styles.textContainer}>
           <h1>Today: {todayDate}</h1>
           <p>Enter a date range and select events.</p>
@@ -15,7 +15,7 @@ export function FormSection({ todayDate, today, maxPastDate, onFormSubmite }) {
           today={today}
           maxPastDate={maxPastDate}
         />
-      </section>
+      </div>
     </>
   );
 }
