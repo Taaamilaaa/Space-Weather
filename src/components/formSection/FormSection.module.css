@@ -1,5 +1,5 @@
-.section {
-  padding: 30px;
+.container {
+  padding: 50px;
 
   background-color: var(--color-card);
   color: var(--color-text);
@@ -9,6 +9,9 @@
   text-align: center;
   margin-bottom: 30px;
 }
-.textContainer h1 {
-  color: var(--color-heading);
+h2 {
+  color: var(--color-text);
+}
+.cotainer p {
+  color: var(--color-text-secondary);
 }
