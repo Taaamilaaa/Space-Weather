@@ -2,7 +2,7 @@ import { EventCard } from "../eventCard/EventCard";
 
 export function EventCardList({ events }) {
   return (
-    <>
+    <div>
       <ul>
         {events.map((e) => {
           for (const el in e) {
@@ -12,6 +12,6 @@ export function EventCardList({ events }) {
           }
         })}
       </ul>
-    </>
+    </div>
   );
 }
