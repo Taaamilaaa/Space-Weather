@@ -3,6 +3,7 @@ import { Button } from "../button/Button";
 import CardIcon from "../cardIcon/CardIcon";
 import { Link } from "react-router-dom";
 import { EventPage } from "../../pages/EventPage";
+import { typeColor } from "../../utils/helpers";
 
 export function EventCard({ evEl }) {
   const {
@@ -13,7 +14,6 @@ export function EventCard({ evEl }) {
     endTime,
     eventTime,
     classType,
-    link,
     date,
     kpIndex,
     id,
@@ -22,86 +22,82 @@ export function EventCard({ evEl }) {
   return (
     <li className={styles.cardItem}>
       <div className={styles.card}>
-        <div className={styles.cardTitleWrapper}>
-          <CardIcon type={type} />
-          <h2>{title}</h2>
-        </div>
-        <ul className={styles.dataList}>
-          <li>
-            <p>
-              Event date:
-              {type === "FLR" ? (
-                <time dateTime={startTime}>{date}</time>
-              ) : (
-                <time dateTime={eventTime}>{date}</time>
-              )}
-            </p>
-          </li>
+        <h2 style={{ color: typeColor(type) }}>{title}</h2>
+        <div className={styles.container}>
+          <CardIcon type={type} size={100} />
+          <ul className={styles.dataList}>
+            <li>
+              <p>
+                Event date:
+                {type === "FLR" ? (
+                  <time dateTime={startTime}>{date}</time>
+                ) : (
+                  <time dateTime={eventTime}>{date}</time>
+                )}
+              </p>
+            </li>
 
-          {type === "FLR" ? (
-            <>
-              <li>
-                <ul>
-                  <li>
-                    <p>
-                      Event time:
-                      <time dateTime={startTime}>{startTime}</time>
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Start time:
-                      <time dateTime={startTime}>{startTime}</time>
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Peak time:
-                      <time dateTime={peakTime}>{peakTime}</time>
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      End time:
-                      <time dateTime={endTime}>{endTime}</time>
-                    </p>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <p>
-                  Class:
-                  {classType}
-                </p>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <p>
-                  Event time:
-                  <time dateTime={eventTime}>{eventTime}</time>
-                </p>
-              </li>
-
-              {type === "GST" && (
+            {type === "FLR" ? (
+              <>
                 <li>
-                  <p>Event kp index: {kpIndex}</p>
+                  <ul>
+                    <li>
+                      <p>
+                        Event time:
+                        <time dateTime={startTime}>{startTime}</time>
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        Start time:
+                        <time dateTime={startTime}>{startTime}</time>
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        Peak time:
+                        <time dateTime={peakTime}>{peakTime}</time>
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        End time:
+                        <time dateTime={endTime}>{endTime}</time>
+                      </p>
+                    </li>
+                  </ul>
                 </li>
-              )}
-            </>
-          )}
-        </ul>
-        <div className={styles.linkWrapper}>
-          <a href={link} target="_blank">
-            <p>Show more information</p>
-          </a>
-          <Link to={`/${id}`} element={<EventPage />}>
-            <Button type="button" className={styles.cardButton}>
-              More details
-            </Button>{" "}
-          </Link>
+                <li>
+                  <p>
+                    Class:
+                    {classType}
+                  </p>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <p>
+                    Event time:
+                    <time dateTime={eventTime}>{eventTime}</time>
+                  </p>
+                </li>
+
+                {type === "GST" && (
+                  <li>
+                    <p>Event kp index: {kpIndex}</p>
+                  </li>
+                )}
+              </>
+            )}
+          </ul>
         </div>
+
+        <Link to={`/${id}`} element={<EventPage />}>
+          <Button type="button" className={styles.cardButton}>
+            More details
+          </Button>{" "}
+        </Link>
       </div>
     </li>
   );
