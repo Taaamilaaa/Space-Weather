@@ -26,12 +26,13 @@ export function dateCut(date) {
   const day = date.substring(0, 10);
   return day;
 }
+
 export function dateForAPICut(date) {
-  //2025-08-03T13:50Z
   const newDate = date.substring(0, 16);
 
   return `${newDate}:00Z`;
 }
+
 export const imgIndexSelect = (arr) => {
   const min = 0;
   const max = arr.length;
@@ -80,10 +81,8 @@ export function dataNormol(data, setEventFlag) {
 
   data.map((event) => {
     const type = event.type;
-
     const evData = event.data;
     const evImages = event.DONKIimg;
-
     evData.length === 0 ? setEventFlag(true) : setEventFlag(null);
 
     for (const e in evData) {
@@ -99,6 +98,7 @@ export function dataNormol(data, setEventFlag) {
 
   return arrResp;
 }
+
 export const imgFilter = (arr) => {
   return arr
     .map((el) => el.links && el.links[0]?.href)
