@@ -63,19 +63,17 @@ export function EventCard({ evEl }) {
                   <li>
                     <p>
                       End time:
-                      <time dateTime={endTime}>{eventTime}</time>
+                      <time dateTime={endTime}>{endTime}</time>
                     </p>
                   </li>
                 </ul>
               </li>
-              {type === "FLR" && (
-                <li>
-                  <p>
-                    Class:
-                    {classType}
-                  </p>
-                </li>
-              )}
+              <li>
+                <p>
+                  Class:
+                  {classType}
+                </p>
+              </li>
             </>
           ) : (
             <>
@@ -86,7 +84,7 @@ export function EventCard({ evEl }) {
                 </p>
               </li>
 
-              {type === "GSP" && (
+              {type === "GST" && (
                 <li>
                   <p>Event kp index: {kpIndex}</p>
                 </li>
