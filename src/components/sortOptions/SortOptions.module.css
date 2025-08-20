@@ -1,0 +1,11 @@
+.container {
+  text-align: right;
+  margin-bottom: 20px;
+}
+.container label {
+  margin-right: 15px;
+}
+.container select {
+  background: var(--color-card);
+  color: var(--text-color);
+}
