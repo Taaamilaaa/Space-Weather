@@ -1,22 +1,17 @@
 .card {
-  padding: 30px;
+  padding: 50px;
   background-color: var(--color-card);
   color: var(--color-text);
   text-align: end;
 }
-.cardTitleWrapper {
-  display: flex;
-  align-items: center;
+.card h2 {
+  text-align: center;
   margin-bottom: 25px;
-  color: var(--color-accent);
 }
 .cardButton {
   margin-left: auto;
 }
 .dataList {
-  margin-bottom: 25px;
-  color: var(--color-text-secondary);
-  padding-left: 75px;
   text-align: left;
 }
 .cardItem {
@@ -26,4 +21,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
 }
