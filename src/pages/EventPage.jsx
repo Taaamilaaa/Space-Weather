@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getSunImage } from "../api/helioviewerAPI";
 import { dateForAPICut } from "../utils/helpers.js";
+import { typeColor } from "../utils/helpers.js";
 
 export function EventPage({ data }) {
   const [sunImg, setSunImg] = useState("");
@@ -25,7 +26,6 @@ export function EventPage({ data }) {
     kpIndex,
     img,
   } = event;
-  console.log(loading);
   useEffect(() => {
     if (type === "FLR") {
       const { beginTime } = event;
@@ -33,9 +33,7 @@ export function EventPage({ data }) {
       const loadSunImg = async () => {
         try {
           setLoading(true);
-
           const resp = await getSunImage(date);
-
           setSunImg(resp);
         } catch (error) {
           setError(true);
@@ -49,7 +47,7 @@ export function EventPage({ data }) {
 
   return (
     <>
-      <h1>{title}</h1>
+      <h1 style={{ color: typeColor(type) }}>{title}</h1>
 
       {loading ? (
         <p>Loading...</p>
@@ -68,6 +66,9 @@ export function EventPage({ data }) {
       <p>link:{link}</p>
       <p>date: {date}</p>
       <p>index:{kpIndex}</p>
+      <a href={link} target="_blank">
+        <p>Show more information</p>
+      </a>
     </>
   );
 }
