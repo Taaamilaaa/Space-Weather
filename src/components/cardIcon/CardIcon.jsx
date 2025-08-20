@@ -4,19 +4,20 @@ import { GiSunRadiations } from "react-icons/gi";
 import { GiBarbedSun } from "react-icons/gi";
 import { GiSunSpear } from "react-icons/gi";
 import { GiRadiations } from "react-icons/gi";
+import { typeColor } from "../../utils/helpers";
 import styles from "./CardIcon.module.css";
 
-function CardIcon({ type }) {
+function CardIcon({ type, size }) {
   return (
     <div className={styles.iconWrapper}>
-      {type === "GST" && <SiApachestorm size={35} color="rgb(35, 155, 167)" />}
-      {type === "FLR" && <TbSunWind size={35} color="rgb(255, 204, 0)" />}
+      {type === "GST" && <SiApachestorm size={size} color={typeColor(type)} />}
+      {type === "FLR" && <TbSunWind size={size} color={typeColor(type)} />}
       {type === "SEP" && (
-        <GiSunRadiations size={35} color="rgb(225, 170, 54)" />
+        <GiSunRadiations size={size} color={typeColor(type)} />
       )}
-      {type === "MPC" && <GiBarbedSun size={35} color="rgb(154, 203, 208)" />}
-      {type === "RBE" && <GiRadiations size={35} color="rgb(177, 59, 255)" />}
-      {type === "HSS" && <GiSunSpear size={35} color="rgb(0, 101, 248)" />}
+      {type === "MPC" && <GiBarbedSun size={size} color={typeColor(type)} />}
+      {type === "RBE" && <GiRadiations size={size} color={typeColor(type)} />}
+      {type === "HSS" && <GiSunSpear size={size} color={typeColor(type)} />}
     </div>
   );
 }
