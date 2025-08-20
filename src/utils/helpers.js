@@ -104,3 +104,15 @@ export const imgFilter = (arr) => {
     .map((el) => el.links && el.links[0]?.href)
     .filter((url) => url && (url.endsWith(".jpg") || url.endsWith(".png")));
 };
+export function typeColor(type) {
+  const colors = {
+    GST: "rgb(35, 155, 167)",
+    FLR: "rgb(255, 204, 0)",
+    SEP: "rgb(225, 170, 54)",
+    MPC: "rgb(154, 203, 208)",
+    RBE: "rgb(177, 59, 255)",
+    HSS: "rgb(0, 101, 248)",
+  };
+
+  return colors[type];
+}
